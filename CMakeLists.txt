@@ -10,7 +10,6 @@ include(${LCM_USE_FILE})
 
 # Add subdirectories for MAB CANdle package and VectorNav package
 add_subdirectory(external/candle candle)
-add_subdirectory(external/libvncxx libvncxx)
 
 # This line prevents examples 1-15 from being compiled during a typical "make" command
 set_property(DIRECTORY external/candle/ PROPERTY EXCLUDE_FROM_ALL YES)
@@ -22,51 +21,52 @@ include_directories(
 )
 
 # Create middleware executable
-add_executable(middleware src/middleware.cpp
-    src/hopper.cpp
-    src/global_utils.cpp
-    src/imu_utils.cpp
-    src/motor_utils.cpp
-    src/loop_timer.cpp
-    src/kalman_filter.cpp
-)
+# add_executable(middleware src/middleware.cpp
+#     src/hopper.cpp
+#     src/global_utils.cpp
+#     src/imu_utils.cpp
+#     src/motor_utils.cpp
+#     src/loop_timer.cpp
+#     src/kalman_filter.cpp
+# )
 # Headers are in include/
-target_include_directories(middleware PUBLIC
-    include
-)
+# target_include_directories(middleware PUBLIC
+#     include
+# )
 # Link it to MAB CANdle, VectorNav, and pthread packages
-target_link_libraries(middleware
-    candle
-    libvncxx
-    pthread
-    lcm
-)
+# target_link_libraries(middleware
+#     candle
+#     # libvncxx
+#     # pthread
+#     # lcm
+# )
 
 # Create upper computer simulator executable
-add_executable(upper_computer_simulator src/upper_computer_simulator.cpp
-    src/global_utils.cpp
-    src/loop_timer.cpp
-)
+# add_executable(upper_computer_simulator src/upper_computer_simulator.cpp
+#     src/global_utils.cpp
+#     src/loop_timer.cpp
+# )
 # Headers are in include/
-target_include_directories(upper_computer_simulator PUBLIC
-    include
-)
-# Link it to MAB CANdle, VectorNav, and pthread packages
-target_link_libraries(upper_computer_simulator
-    pthread
-    lcm
-)
+# target_include_directories(upper_computer_simulator PUBLIC
+#     include
+# )
+# # Link it to MAB CANdle, VectorNav, and pthread packages
+# target_link_libraries(upper_computer_simulator
+#     pthread
+#     lcm
+# )
 
 
 # Create encoder test executable
-add_executable(encoder src/encoder.cpp
+add_executable(clutch src/spin_clutch.cpp
     src/loop_timer.cpp
     src/global_utils.cpp
-
+    src/motor_utils.cpp
 )
-target_include_directories(encoder PUBLIC
+target_include_directories(clutch PUBLIC
     include
 )
-target_link_libraries(encoder
+target_link_libraries(clutch
+    candle
     wiringPi
 )
