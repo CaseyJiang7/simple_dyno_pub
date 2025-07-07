@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/clutch.dir/src/spin_clutch.cpp.o CMakeFiles/clutch.dir/src/loop_timer.cpp.o CMakeFiles/clutch.dir/src/global_utils.cpp.o -o clutch  -lwiringPi 

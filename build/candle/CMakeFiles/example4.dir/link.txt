@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/example4.dir/examples_cpp/example4.cpp.o -o example4  -Wl,-rpath,/home/arcad/src/clutch_benchmark/build/candle libcandle.so -lpthread 

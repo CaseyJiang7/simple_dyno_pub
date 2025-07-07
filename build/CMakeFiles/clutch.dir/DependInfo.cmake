@@ -1,0 +1,21 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/arcad/src/clutch_benchmark/src/global_utils.cpp" "CMakeFiles/clutch.dir/src/global_utils.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/global_utils.cpp.o.d"
+  "/home/arcad/src/clutch_benchmark/src/loop_timer.cpp" "CMakeFiles/clutch.dir/src/loop_timer.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/loop_timer.cpp.o.d"
+  "/home/arcad/src/clutch_benchmark/src/spin_clutch.cpp" "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o.d"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")
