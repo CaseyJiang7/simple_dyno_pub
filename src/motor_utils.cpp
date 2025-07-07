@@ -8,7 +8,7 @@ Candle *initializeCandle() {
   while (!candle && attempts < 10) {
     try {
       attempts++;
-      candle = new Candle(CAN_BAUD_8M, true, BusType_E::SPI);
+      candle = new Candle(CAN_BAUD_1M, true, BusType_E::USB);
     } catch (...) {
       usleep(1e6);
     }

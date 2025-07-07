@@ -2,9 +2,9 @@
 
 #include "global_utils.h"
 #include <candle.hpp>
-#include <vn/sensors.h>
+// #include <vn/sensors.h>
 
-using namespace vn::sensors;
+// using namespace vn::sensors;
 using namespace mab;
 
 /// @brief Function to safely construct candle instance.

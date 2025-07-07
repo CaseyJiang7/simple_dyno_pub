@@ -1,8 +1,8 @@
 #pragma once
 
-#include "hopper_lcm_msgs/hopper_control_t.hpp"
-#include "hopper_lcm_msgs/hopper_state_t.hpp"
-#include <Eigen>
+// #include "hopper_lcm_msgs/hopper_control_t.hpp"
+// #include "hopper_lcm_msgs/hopper_state_t.hpp"
+// #include <Eigen>
 #include <iostream>
 #include <mutex>
 #include <string>
@@ -33,16 +33,16 @@ const int KNEE_MOTOR_INDEX = 1;
 /// @return Time since Epoch in ns
 uint64_t rtcNsSinceEpoch();
 
-/// @brief Output operator for hopper_control_t messages
-/// @param os output stream
-/// @param command message to print
-/// @return output stream
-std::ostream &operator<<(std::ostream &os,
-                         const hopper_lcm_msgs::hopper_control_t &command);
+// /// @brief Output operator for hopper_control_t messages
+// /// @param os output stream
+// /// @param command message to print
+// /// @return output stream
+// std::ostream &operator<<(std::ostream &os,
+//                          const hopper_lcm_msgs::hopper_control_t &command);
 
-/// @brief Output operator for hopper_state_t messages
-/// @param os output stream
-/// @param state message to print
-/// @return output stream
-std::ostream &operator<<(std::ostream &os,
-                         const hopper_lcm_msgs::hopper_state_t &state);
+// /// @brief Output operator for hopper_state_t messages
+// /// @param os output stream
+// /// @param state message to print
+// /// @return output stream
+// std::ostream &operator<<(std::ostream &os,
+//                          const hopper_lcm_msgs::hopper_state_t &state);
