@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/clutch.dir/src/spin_clutch.cpp.o CMakeFiles/clutch.dir/src/loop_timer.cpp.o CMakeFiles/clutch.dir/src/global_utils.cpp.o CMakeFiles/clutch.dir/src/motor_utils.cpp.o -o clutch  -Wl,-rpath,/home/arcad/src/clutch_benchmark/build/candle candle/libcandle.so -lwiringPi -lpthread 
