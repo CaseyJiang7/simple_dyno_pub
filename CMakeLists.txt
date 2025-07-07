@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 # Define project name
 project(hopper)
 
-find_package(lcm REQUIRED)
-include(${LCM_USE_FILE})
+# find_package(lcm REQUIRED)
+# include(${LCM_USE_FILE})
 
 # Add subdirectories for MAB CANdle package and VectorNav package
 add_subdirectory(external/candle candle)

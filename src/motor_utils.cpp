@@ -8,7 +8,7 @@ Candle *initializeCandle() {
   while (!candle && attempts < 10) {
     try {
       attempts++;
-      candle = new Candle(CAN_BAUD_1M, true, BusType_E::USB);
+      candle = new Candle(CAN_BAUD_8M, true, BusType_E::SPI);
     } catch (...) {
       usleep(1e6);
     }
@@ -29,7 +29,7 @@ void initializeMotors(Candle *candle) {
   // Ping FDCAN bus in search of drives
   auto ids = candle->ping(mab::CAN_BAUD_8M);
 
-  if (ids.size() != 2) {
+  if (ids.size() != 1) {
     cout << "Expected 2 motors, found " << ids.size()
          << " motors instead. Aborted." << endl;
     exit(EXIT_FAILURE);
@@ -66,14 +66,14 @@ void initializeMotors(Candle *candle) {
 }
 
 void checkMotorConnections(Candle *candle) {
-  if (candle->md80s.size() != 2) {
+  if (candle->md80s.size() != 1) {
 
     std::cout << "[CANDLE] Connected Motor IDs: ";
     for (size_t i = 0; i < candle->md80s.size(); ++i) {
       std::cout << candle->md80s[i].getId() << " ";
     }
     std::cout << std::endl;
-    std::cout << "[CANDLE] Expected 2 motors, found " << candle->md80s.size()
+    std::cout << "[CANDLE] Expected 1 motors, found " << candle->md80s.size()
               << BOLDRED << " [FAILED]" << STDTEXT << std::endl;
     exit(EXIT_FAILURE);
   }
