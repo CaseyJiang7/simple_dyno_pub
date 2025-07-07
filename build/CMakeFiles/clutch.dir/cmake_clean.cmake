@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/clutch.dir/src/global_utils.cpp.o.d"
   "CMakeFiles/clutch.dir/src/loop_timer.cpp.o"
   "CMakeFiles/clutch.dir/src/loop_timer.cpp.o.d"
+  "CMakeFiles/clutch.dir/src/motor_utils.cpp.o"
+  "CMakeFiles/clutch.dir/src/motor_utils.cpp.o.d"
   "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o"
   "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o.d"
   "clutch"

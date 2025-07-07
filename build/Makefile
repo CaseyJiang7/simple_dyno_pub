@@ -385,6 +385,30 @@ src/loop_timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/src/loop_timer.cpp.s
 .PHONY : src/loop_timer.cpp.s
 
+src/motor_utils.o: src/motor_utils.cpp.o
+.PHONY : src/motor_utils.o
+
+# target to build an object file
+src/motor_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/src/motor_utils.cpp.o
+.PHONY : src/motor_utils.cpp.o
+
+src/motor_utils.i: src/motor_utils.cpp.i
+.PHONY : src/motor_utils.i
+
+# target to preprocess a source file
+src/motor_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/src/motor_utils.cpp.i
+.PHONY : src/motor_utils.cpp.i
+
+src/motor_utils.s: src/motor_utils.cpp.s
+.PHONY : src/motor_utils.s
+
+# target to generate assembly for a file
+src/motor_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/src/motor_utils.cpp.s
+.PHONY : src/motor_utils.cpp.s
+
 src/spin_clutch.o: src/spin_clutch.cpp.o
 .PHONY : src/spin_clutch.o
 
@@ -440,6 +464,9 @@ help:
 	@echo "... src/loop_timer.o"
 	@echo "... src/loop_timer.i"
 	@echo "... src/loop_timer.s"
+	@echo "... src/motor_utils.o"
+	@echo "... src/motor_utils.i"
+	@echo "... src/motor_utils.s"
 	@echo "... src/spin_clutch.o"
 	@echo "... src/spin_clutch.i"
 	@echo "... src/spin_clutch.s"

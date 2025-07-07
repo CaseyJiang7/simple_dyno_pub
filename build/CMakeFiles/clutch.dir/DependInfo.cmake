@@ -10,11 +10,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/arcad/src/clutch_benchmark/src/global_utils.cpp" "CMakeFiles/clutch.dir/src/global_utils.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/global_utils.cpp.o.d"
   "/home/arcad/src/clutch_benchmark/src/loop_timer.cpp" "CMakeFiles/clutch.dir/src/loop_timer.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/loop_timer.cpp.o.d"
+  "/home/arcad/src/clutch_benchmark/src/motor_utils.cpp" "CMakeFiles/clutch.dir/src/motor_utils.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/motor_utils.cpp.o.d"
   "/home/arcad/src/clutch_benchmark/src/spin_clutch.cpp" "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o" "gcc" "CMakeFiles/clutch.dir/src/spin_clutch.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/arcad/src/clutch_benchmark/build/candle/CMakeFiles/candle.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

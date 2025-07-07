@@ -124,15 +124,15 @@ candle/clean: candle/CMakeFiles/example15.dir/clean
 # Target rules for target CMakeFiles/clutch.dir
 
 # All Build rule for target.
-CMakeFiles/clutch.dir/all:
+CMakeFiles/clutch.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clutch.dir/build.make CMakeFiles/clutch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=10,11,12,13 "Built target clutch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=10,11,12,13,14 "Built target clutch"
 .PHONY : CMakeFiles/clutch.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/clutch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arcad/src/clutch_benchmark/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arcad/src/clutch_benchmark/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/clutch.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arcad/src/clutch_benchmark/build/CMakeFiles 0
 .PHONY : CMakeFiles/clutch.dir/rule
@@ -179,7 +179,7 @@ candle/CMakeFiles/candle.dir/clean:
 candle/CMakeFiles/example1.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example1.dir/build.make candle/CMakeFiles/example1.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example1.dir/build.make candle/CMakeFiles/example1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=14,15 "Built target example1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=15,16 "Built target example1"
 .PHONY : candle/CMakeFiles/example1.dir/all
 
 # Build rule for subdir invocation for target.
@@ -205,7 +205,7 @@ candle/CMakeFiles/example1.dir/clean:
 candle/CMakeFiles/example2.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example2.dir/build.make candle/CMakeFiles/example2.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example2.dir/build.make candle/CMakeFiles/example2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=28,29 "Built target example2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=29,30 "Built target example2"
 .PHONY : candle/CMakeFiles/example2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -231,7 +231,7 @@ candle/CMakeFiles/example2.dir/clean:
 candle/CMakeFiles/example3.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example3.dir/build.make candle/CMakeFiles/example3.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example3.dir/build.make candle/CMakeFiles/example3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=30,31 "Built target example3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=31,32 "Built target example3"
 .PHONY : candle/CMakeFiles/example3.dir/all
 
 # Build rule for subdir invocation for target.
@@ -257,7 +257,7 @@ candle/CMakeFiles/example3.dir/clean:
 candle/CMakeFiles/example4.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example4.dir/build.make candle/CMakeFiles/example4.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example4.dir/build.make candle/CMakeFiles/example4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=32,33 "Built target example4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=33,34 "Built target example4"
 .PHONY : candle/CMakeFiles/example4.dir/all
 
 # Build rule for subdir invocation for target.
@@ -283,7 +283,7 @@ candle/CMakeFiles/example4.dir/clean:
 candle/CMakeFiles/example5.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example5.dir/build.make candle/CMakeFiles/example5.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example5.dir/build.make candle/CMakeFiles/example5.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=34,35 "Built target example5"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=35,36 "Built target example5"
 .PHONY : candle/CMakeFiles/example5.dir/all
 
 # Build rule for subdir invocation for target.
@@ -309,7 +309,7 @@ candle/CMakeFiles/example5.dir/clean:
 candle/CMakeFiles/example6.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example6.dir/build.make candle/CMakeFiles/example6.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example6.dir/build.make candle/CMakeFiles/example6.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=36,37 "Built target example6"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=37,38 "Built target example6"
 .PHONY : candle/CMakeFiles/example6.dir/all
 
 # Build rule for subdir invocation for target.
@@ -335,7 +335,7 @@ candle/CMakeFiles/example6.dir/clean:
 candle/CMakeFiles/example7.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example7.dir/build.make candle/CMakeFiles/example7.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example7.dir/build.make candle/CMakeFiles/example7.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=38,39 "Built target example7"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=39,40 "Built target example7"
 .PHONY : candle/CMakeFiles/example7.dir/all
 
 # Build rule for subdir invocation for target.
@@ -361,7 +361,7 @@ candle/CMakeFiles/example7.dir/clean:
 candle/CMakeFiles/example8.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example8.dir/build.make candle/CMakeFiles/example8.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example8.dir/build.make candle/CMakeFiles/example8.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=40,41 "Built target example8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=41,42 "Built target example8"
 .PHONY : candle/CMakeFiles/example8.dir/all
 
 # Build rule for subdir invocation for target.
@@ -387,7 +387,7 @@ candle/CMakeFiles/example8.dir/clean:
 candle/CMakeFiles/example9.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example9.dir/build.make candle/CMakeFiles/example9.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example9.dir/build.make candle/CMakeFiles/example9.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=42,43 "Built target example9"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=43,44 "Built target example9"
 .PHONY : candle/CMakeFiles/example9.dir/all
 
 # Build rule for subdir invocation for target.
@@ -413,7 +413,7 @@ candle/CMakeFiles/example9.dir/clean:
 candle/CMakeFiles/example10.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example10.dir/build.make candle/CMakeFiles/example10.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example10.dir/build.make candle/CMakeFiles/example10.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=16,17 "Built target example10"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=17,18 "Built target example10"
 .PHONY : candle/CMakeFiles/example10.dir/all
 
 # Build rule for subdir invocation for target.
@@ -439,7 +439,7 @@ candle/CMakeFiles/example10.dir/clean:
 candle/CMakeFiles/example11.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example11.dir/build.make candle/CMakeFiles/example11.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example11.dir/build.make candle/CMakeFiles/example11.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=18,19 "Built target example11"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=19,20 "Built target example11"
 .PHONY : candle/CMakeFiles/example11.dir/all
 
 # Build rule for subdir invocation for target.
@@ -465,7 +465,7 @@ candle/CMakeFiles/example11.dir/clean:
 candle/CMakeFiles/example12.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example12.dir/build.make candle/CMakeFiles/example12.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example12.dir/build.make candle/CMakeFiles/example12.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=20,21 "Built target example12"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=21,22 "Built target example12"
 .PHONY : candle/CMakeFiles/example12.dir/all
 
 # Build rule for subdir invocation for target.
@@ -491,7 +491,7 @@ candle/CMakeFiles/example12.dir/clean:
 candle/CMakeFiles/example13.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example13.dir/build.make candle/CMakeFiles/example13.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example13.dir/build.make candle/CMakeFiles/example13.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=22,23 "Built target example13"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=23,24 "Built target example13"
 .PHONY : candle/CMakeFiles/example13.dir/all
 
 # Build rule for subdir invocation for target.
@@ -517,7 +517,7 @@ candle/CMakeFiles/example13.dir/clean:
 candle/CMakeFiles/example14.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example14.dir/build.make candle/CMakeFiles/example14.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example14.dir/build.make candle/CMakeFiles/example14.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=24,25 "Built target example14"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=25,26 "Built target example14"
 .PHONY : candle/CMakeFiles/example14.dir/all
 
 # Build rule for subdir invocation for target.
@@ -543,7 +543,7 @@ candle/CMakeFiles/example14.dir/clean:
 candle/CMakeFiles/example15.dir/all: candle/CMakeFiles/candle.dir/all
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example15.dir/build.make candle/CMakeFiles/example15.dir/depend
 	$(MAKE) $(MAKESILENT) -f candle/CMakeFiles/example15.dir/build.make candle/CMakeFiles/example15.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=26,27 "Built target example15"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arcad/src/clutch_benchmark/build/CMakeFiles --progress-num=27,28 "Built target example15"
 .PHONY : candle/CMakeFiles/example15.dir/all
 
 # Build rule for subdir invocation for target.

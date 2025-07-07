@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/arcad/src/clutch_benchmark/external/libvncxx/include -I/usr/local/include/eigen3/Eigen -I/home/arcad/src/clutch_benchmark/include
+CXX_INCLUDES = -I/home/arcad/src/clutch_benchmark/external/libvncxx/include -I/usr/local/include/eigen3/Eigen -I/home/arcad/src/clutch_benchmark/include -I/home/arcad/src/clutch_benchmark/external/candle/include
 
 CXX_FLAGS = -std=gnu++14
 
