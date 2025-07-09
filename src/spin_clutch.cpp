@@ -16,7 +16,7 @@ int main(){
   uint64_t time_elapsed = 0;
 
   std::ofstream output_file;
-  output_file.open("../data/clutch_test_3");
+  output_file.open("../data/clutch_test_4");
   std::string header = "time, motor_pos, motor_vel, motor_torque, clutch_engaged";
   output_file << header << std::endl;
 
@@ -40,7 +40,7 @@ int main(){
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
     // motor.setTargetTorque(-5);
-    motor.setTargetPosition(sin(time_elapsed * 5e-9) * 2 - 2 );
+    motor.setTargetPosition(sin(time_elapsed * 5e-9) * 2 );
     // Throttle loop frequency to 1 kHz
     lt.wait(1e6);
 
