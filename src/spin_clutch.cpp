@@ -78,6 +78,7 @@ int main(){
   auto &motor = candle->md80s[0];
   motor.setTargetVelocity(0);
   motor.setTargetTorque(0);
+  lt.wait(1e9);
   std::cout << "DONE" << std::endl;
 
 }
