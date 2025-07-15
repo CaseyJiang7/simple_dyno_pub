@@ -1,9 +1,9 @@
 clear
 close all
 
-A = readtable("clutch_test_3");
+A = readtable("clutch_test_4");
 
-v = VideoWriter("plot_video.mp4","MPEG-4");
+v = VideoWriter("plot_video_exp4.mp4","MPEG-4");
 
 pos = A.motor_pos;
 vel = A.motor_vel;
@@ -35,6 +35,8 @@ xlabel("Motor Position (rads)")
 
 open(v)
 
+writelegend = true;
+
 for i = time(1):1/fps:time(end)
     now = time > i & time < i + 1/fps;
 
@@ -45,13 +47,20 @@ for i = time(1):1/fps:time(end)
     time_now = time(now);
     % nexttile
     yyaxis(ax1, 'left')
-    plot(ax1, time_now, pos_now, Marker='none', LineStyle='-', DisplayName="Motor Position");
+    plot(ax1, time_now, pos_now, Marker='none', LineStyle='-');
     yyaxis(ax1,'right')
-    plot(ax1, time_now, tau_now, Marker='none', LineStyle='-', DisplayName="Motor Torque");
+    plot(ax1, time_now, tau_now, Marker='none', LineStyle='-');
+    
     
     % nexttile
-    scatter(ax2, pos_now(clutch_now), tau_now(clutch_now), Marker='.', MarkerEdgeColor='r', DisplayName="Clutch Disengaged")
-    scatter(ax2, pos_now(~clutch_now), tau_now(~clutch_now), Marker='.', MarkerEdgeColor='b', DisplayName="Clutch Engaged")
+    scatter(ax2, pos_now(clutch_now), tau_now(clutch_now), Marker='.', MarkerEdgeColor='r')
+    scatter(ax2, pos_now(~clutch_now), tau_now(~clutch_now), Marker='.', MarkerEdgeColor='b')
+
+    if writelegend
+        legend(ax1, "Motor Position", "Motor Torque")
+        legend(ax2, "CLutch Disengaged", "Clutch Engaged")
+        writelegend = false;
+    end
 
     frame = getframe(gcf);
     writeVideo(v, frame.cdata)
