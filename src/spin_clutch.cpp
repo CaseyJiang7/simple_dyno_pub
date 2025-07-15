@@ -50,7 +50,7 @@ int main(){
     checkMotorConnections(candle);
     // Grab a ref to motor
     auto &motor = candle->md80s[0];
-    motor.setImpedanceControllerParams(10, 1);
+    motor.setImpedanceControllerParams(20, 2);
     curr_time = rtcNsSinceEpoch();
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
