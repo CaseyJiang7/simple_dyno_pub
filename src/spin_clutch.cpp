@@ -35,12 +35,12 @@ int main(){
     checkMotorConnections(candle);
     // Grab a ref to motor
     auto &motor = candle->md80s[0];
-    motor.setImpedanceControllerParams(3.5, 0.25);
+    motor.setImpedanceControllerParams(10, 1);
     curr_time = rtcNsSinceEpoch();
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
     // motor.setTargetTorque(-5);
-    motor.setTargetPosition(sin(time_elapsed * 5e-9) * 1.5 );
+    motor.setTargetPosition(sin(time_elapsed * 5e-9));
     // Throttle loop frequency to 1 kHz
     lt.wait(1e6);
 
