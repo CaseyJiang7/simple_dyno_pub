@@ -55,13 +55,13 @@ int main(){
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
     // motor.setTargetTorque(-5);
-    motor.setTargetPosition(sin(time_elapsed * 5e-9));
+    motor.setTargetPosition(sin(time_elapsed * 5e-9) -1 );
     // Throttle loop frequency to 1 kHz
     lt.wait(1e6);
 
     // write things to file
     output_file << time_elapsed << ',' << motor.getPosition() << ',' << motor.getVelocity() << ',' << motor.getTorque() << ',' << adc_.readTorque() << ',' << clutch_engaged << std::endl;
-    if(time_elapsed > 5e9 && !clutch_engaged && abs(motor.getPosition()) < 0.1){
+    if(time_elapsed > 5e9 && !clutch_engaged && abs(motor.getPosition()) < 0.2){
       clutch_engaged = true;
       digitalWrite(17, HIGH);
       
