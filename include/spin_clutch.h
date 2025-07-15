@@ -3,6 +3,7 @@
 #include "candle.hpp"
 #include "loop_timer.h"
 #include "motor_utils.h"
+#include "ADS1115.h"
 #include <fstream>
 #include <iostream>
 #include <thread>

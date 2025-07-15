@@ -62,6 +62,7 @@ add_executable(clutch src/spin_clutch.cpp
     src/loop_timer.cpp
     src/global_utils.cpp
     src/motor_utils.cpp
+    src/ADS1115.cpp
 )
 target_include_directories(clutch PUBLIC
     include

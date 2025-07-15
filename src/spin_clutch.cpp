@@ -5,24 +5,39 @@
 static bool RUN = true;
 
 int main(){
-  createSigIntHandler();
+  createSigIntHandler(); // start e stop to catch ctrl + c
+
+  // initialize candle
   Candle *candle = initializeCandle();
   initializeMotors(candle);
+  
+  // make looptimer
   LoopTimer lt;
+
+  // initialize clutch variable
   bool clutch_engaged = false;
 
+
+  // check time at start
   uint64_t start_time = rtcNsSinceEpoch();
   uint64_t curr_time = rtcNsSinceEpoch();
   uint64_t time_elapsed = 0;
 
+  // setup output csv file and write header
   std::ofstream output_file;
   output_file.open("../data/clutch_test_4");
-  std::string header = "time, motor_pos, motor_vel, motor_torque, clutch_engaged";
+  std::string header = "time, motor_pos, motor_vel, motor_torque, sensor_torque, clutch_engaged";
   output_file << header << std::endl;
 
+  // setup gpio pin for clutch
   wiringPiSetupGpio();
   pinMode(17, OUTPUT);
   digitalWrite(17, LOW);
+
+  // initialize adc
+  ADS1115 adc_ = ADS1115();
+
+
 
 
   /* MAIN LOOP */
@@ -45,10 +60,11 @@ int main(){
     lt.wait(1e6);
 
     // write things to file
-    output_file << time_elapsed << ',' << motor.getPosition() << ',' << motor.getVelocity() << ',' << motor.getTorque() << ',' << clutch_engaged << std::endl;
+    output_file << time_elapsed << ',' << motor.getPosition() << ',' << motor.getVelocity() << ',' << motor.getTorque() << ',' << adc_.readTorque() << ',' << clutch_engaged << std::endl;
     if(time_elapsed > 5e9 && !clutch_engaged && abs(motor.getPosition()) < 0.1){
       clutch_engaged = true;
       digitalWrite(17, HIGH);
+      
     }
 
     if(time_elapsed > 1e10){
@@ -56,16 +72,13 @@ int main(){
     }
     
   }
-  digitalWrite(17, LOW);
 
+  digitalWrite(17, LOW);
 
   auto &motor = candle->md80s[0];
   motor.setTargetVelocity(0);
   motor.setTargetTorque(0);
   std::cout << "DONE" << std::endl;
-
-
-    
 
 }
 
