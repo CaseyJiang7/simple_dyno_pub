@@ -25,7 +25,7 @@ int main(){
 
   // setup output csv file and write header
   std::ofstream output_file;
-  output_file.open("../data/clutch_test_4");
+  output_file.open("../data/clutch_test_5");
   std::string header = "time, motor_pos, motor_vel, motor_torque, sensor_torque, clutch_engaged";
   output_file << header << std::endl;
 
@@ -50,7 +50,7 @@ int main(){
     checkMotorConnections(candle);
     // Grab a ref to motor
     auto &motor = candle->md80s[0];
-    motor.setImpedanceControllerParams(20, 2);
+    motor.setImpedanceControllerParams(40, 4);
     curr_time = rtcNsSinceEpoch();
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
