@@ -1,7 +1,7 @@
 if true
     clear
     % A = readtable("clutch_test_1");
-    B = readtable("clutch_test_4");
+    B = readtable("leg_test");
 end
 
 close all
