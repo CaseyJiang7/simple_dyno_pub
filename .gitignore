@@ -45,3 +45,6 @@ build
 
 # backup files
 *.asv
+*.mp4
+*.fig
+*.mp4
