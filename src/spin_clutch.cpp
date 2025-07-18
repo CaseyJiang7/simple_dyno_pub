@@ -25,7 +25,7 @@ int main(){
 
   // setup output csv file and write header
   std::ofstream output_file;
-  output_file.open("../data/leg_test_sensor");
+  output_file.open("../data/leg_test_sensor_lub_2");
   std::string header = "time, motor_pos, motor_vel, motor_torque, sensor_torque, clutch_engaged";
   output_file << header << std::endl;
 
