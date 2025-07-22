@@ -55,7 +55,7 @@ int main(){
     time_elapsed = curr_time - start_time;
     // motor.setTargetTorque(sin(time_elapsed * 1e-8) * 5 - 5);
     // motor.setTargetTorque(-5);
-    motor.setTargetPosition(cos(time_elapsed * 1e-9) * 1.2 -1.2 );
+    motor.setTargetPosition(cos(time_elapsed * 1e-9) * 1 -1 );
     // Throttle loop frequency to 1 kHz
     lt.wait(1e6);
 
