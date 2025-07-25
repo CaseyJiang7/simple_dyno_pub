@@ -1,0 +1,3 @@
+[submodule "external/CANdle-SDK"]
+	path = external/CANdle-SDK
+	url = git@github.com:mabrobotics/CANdle-SDK.git

@@ -1,22 +1,22 @@
 # Set CMake and C++ requirements
 cmake_minimum_required(VERSION 2.8.12)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # Define project name
-project(hopper)
+project(simple_dyno)
 
 # find_package(lcm REQUIRED)
 # include(${LCM_USE_FILE})
 
 # Add subdirectories for MAB CANdle package and VectorNav package
-add_subdirectory(external/candle candle)
+add_subdirectory(external/CANdle-SDK candle)
 
 # This line prevents examples 1-15 from being compiled during a typical "make" command
-set_property(DIRECTORY external/candle/ PROPERTY EXCLUDE_FROM_ALL YES)
+# set_property(DIRECTORY external/CANdle-SDK/ PROPERTY EXCLUDE_FROM_ALL YES)
 
 # Allow all executables to access headers from VectorNav
 include_directories(
-    external/libvncxx/include
+    # external/libvncxx/include
     /usr/local/include/eigen3/Eigen
 )
 
@@ -58,16 +58,16 @@ include_directories(
 
 
 # Create encoder test executable
-add_executable(clutch src/spin_clutch.cpp
+add_executable(spin_motor src/spin_motor.cpp
     src/loop_timer.cpp
     src/global_utils.cpp
     src/motor_utils.cpp
     src/ADS1115.cpp
 )
-target_include_directories(clutch PUBLIC
+target_include_directories(spin_motor PUBLIC
     include
 )
-target_link_libraries(clutch
+target_link_libraries(spin_motor
     candle
     wiringPi
 )

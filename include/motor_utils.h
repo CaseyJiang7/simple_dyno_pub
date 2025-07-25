@@ -1,7 +1,9 @@
 #pragma once
 
 #include "global_utils.h"
-#include <candle.hpp>
+#include "candle.hpp"
+#include "MD.hpp"
+#include <unistd.h>
 // #include <vn/sensors.h>
 
 // using namespace vn::sensors;
@@ -15,8 +17,8 @@ Candle *initializeCandle();
 /// responses. Ensures exactly two motors respond, adds them to CANdle instance,
 /// zeros their encodes, sets them into impedance control mode, and enables them
 /// @param candle CANdle instance to add the motors too
-void initializeMotors(Candle *candle);
+void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const mab::canId_t drive_motor_id);
 
-/// @brief Ensures there are two motors connected to the candle
-/// @param candle Candle object
-void checkMotorConnections(Candle *candle);
+// /// @brief Ensures there are two motors connected to the candle
+// /// @param candle Candle object
+// void checkMotorConnections(Candle *candle);
