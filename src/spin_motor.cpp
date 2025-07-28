@@ -25,7 +25,7 @@ int main(){
 
   // setup output csv file and write header
   std::ofstream output_file;
-  output_file.open("../data/gearmotor_test");
+  output_file.open("../data/gearmotor_test_3");
   std::string header = "time, drive_pos, drive_torque, test_pos, test_torque, sensor_torque";
   output_file << header << std::endl;
 
@@ -57,26 +57,26 @@ int main(){
 
     double seconds = double(time_elapsed) / 1e9;
 
-    double des_tau = int(seconds) % 10;
+    double des_tau = int(seconds) % 10 - 5;
     double des_vel = int(int(seconds) / 10);
 
-    std::cout << des_tau << ',' << des_vel << std::endl;
 
     test_motor.setTargetTorque(des_tau);
     // motor.setTargetTorque(-5);
     drive_motor.setTargetVelocity(des_vel);
 
     // write things to file
-    output_file << time_elapsed << ',' << drive_motor.getPosition().first << ',' << drive_motor.getTorque().first << ','<< test_motor.getPosition().first << ',' << test_motor.getTorque().first << ',' << adc_.readTorque() << std::endl;
+    output_file << time_elapsed << ',' << drive_motor.getPosition().first << ',' << drive_motor.getTorque().first << ','<< test_motor.getPosition().first << ',' << test_motor.getTorque().first  << ',' << adc_.readTorque() << std::endl;
     // if(time_elapsed > 5e10 && !clutch_engaged && abs(motor.getPosition()) < 0.2){
     //   clutch_engaged = true;
     //   digitalWrite(17, HIGH);
       
     // }
+    std::cout << des_tau << ',' << des_vel << ',' << adc_.readTorque() << std::endl;
 
-    // if(time_elapsed > 1e11){
-    //   break;
-    // }
+    if(time_elapsed > 1e10){
+      break;
+    }
 
     // Throttle loop frequency to 1 kHz
     lt.wait(2e6);
