@@ -26,7 +26,7 @@ Candle *initializeCandle() {
   return candle;
 }
 
-void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const mab::canId_t drive_motor_id) {
+std::vector<mab::canId_t> initializeMotors(Candle *candle) {
   // Ping FDCAN bus in search of drives
   auto ids = mab::MD::discoverMDs(candle);
   // Check that we found exactly two motors
@@ -73,16 +73,17 @@ void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const ma
       exit(EXIT_FAILURE);
     }
     md.zero();
-    if(id == test_motor_id){
-      md.setMotionMode(mab::MdMode_E::IMPEDANCE);
-    } else if (id == drive_motor_id)
-    {
-      md.setMotionMode(mab::MdMode_E::VELOCITY_PID);
-    } else{
-      cout << "[DYNO] Motor ID not specified"<< endl;
-      exit(EXIT_FAILURE);
-    }
+    // if(id == test_motor_id){
+    //   md.setMotionMode(mab::MdMode_E::IMPEDANCE);
+    // } else if (id == drive_motor_id)
+    // {
+    //   md.setMotionMode(mab::MdMode_E::IMPEDANCE);
+    // } else{
+    //   cout << "[DYNO] Motor ID not specified"<< endl;
+    //   exit(EXIT_FAILURE);
+    // }
   }
-  mds[0].enable();
-  mds[1].enable();
+  // mds[0].enable();
+  // mds[1].enable();
+  return ids;
 }

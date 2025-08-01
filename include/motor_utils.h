@@ -17,7 +17,7 @@ Candle *initializeCandle();
 /// responses. Ensures exactly two motors respond, adds them to CANdle instance,
 /// zeros their encodes, sets them into impedance control mode, and enables them
 /// @param candle CANdle instance to add the motors too
-void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const mab::canId_t drive_motor_id);
+std::vector<mab::canId_t> initializeMotors(Candle *candle);
 
 // /// @brief Ensures there are two motors connected to the candle
 // /// @param candle Candle object
