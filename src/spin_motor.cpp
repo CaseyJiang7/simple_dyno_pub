@@ -25,7 +25,7 @@ int main(){
 
   // setup output csv file and write header
   std::ofstream output_file;
-  output_file.open("../data/gearmotor_test_3");
+  output_file.open("../data/gearmotor_test_12");
   std::string header = "time, drive_pos, drive_torque, test_pos, test_torque, sensor_torque";
   output_file << header << std::endl;
 
@@ -38,7 +38,8 @@ int main(){
   ADS1115 adc_ = ADS1115();
   mab::MD test_motor(test_motor_id, candle);
   mab::MD drive_motor(drive_motor_id, candle);
-  drive_motor.setVelocityPIDparam(5, .5, 0, 0.1);
+  test_motor.setImpedanceParams(0, 1);
+  drive_motor.setVelocityPIDparam(10, 1, 0, 1);
 
 
 
@@ -57,13 +58,26 @@ int main(){
 
     double seconds = double(time_elapsed) / 1e9;
 
-    double des_tau = int(seconds) % 10 - 5;
-    double des_vel = int(int(seconds) / 10);
+    double des_tau = double((int(seconds) % 22 - 11)/ abs(int(seconds) % 22 - 11)) * ((int(seconds) % 11) - 5) / 5.0;
+    // double des_tau = sin(seconds);
+    // if( seconds > 5){
+    //   des_tau = des_tau * 2;}
+    double des_vel = - int(int(seconds) / 11) % 5;
+    // double des_tau = 0;
+    // double des_vel = 0;
 
 
     test_motor.setTargetTorque(des_tau);
-    // motor.setTargetTorque(-5);
+    // test_motor.setTargetTorque(des_tau);
+
+    test_motor.setTargetVelocity(-des_vel);
+    // test_motor.setTargetVelocity(drive_motor.getVelocity().first);
     drive_motor.setTargetVelocity(des_vel);
+    drive_motor.setMaxTorque(des_tau * 1.5);
+    // test_motor.setTargetPosition(0);
+    // motor.setTargetTorque(-5);
+    // drive_motor.setTargetPosition(time_elapsed * 1e-9);
+
 
     // write things to file
     output_file << time_elapsed << ',' << drive_motor.getPosition().first << ',' << drive_motor.getTorque().first << ','<< test_motor.getPosition().first << ',' << test_motor.getTorque().first  << ',' << adc_.readTorque() << std::endl;
@@ -72,9 +86,9 @@ int main(){
     //   digitalWrite(17, HIGH);
       
     // }
-    std::cout << des_tau << ',' << des_vel << ',' << adc_.readTorque() << std::endl;
+    std::cout << des_tau << ',' << des_vel << ',' << adc_.readTorque() <<',' << test_motor.getTorque().first <<std::endl;
 
-    if(time_elapsed > 1e10){
+    if(time_elapsed > 55e9){
       break;
     }
 
@@ -89,6 +103,7 @@ int main(){
   drive_motor.setTargetVelocity(0);
   test_motor.setTargetTorque(0);
   lt.wait(1e9);
+  mab::detachCandle(candle);
   std::cout << "DONE" << std::endl;
 
 }

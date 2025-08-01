@@ -74,7 +74,7 @@ void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const ma
     }
     md.zero();
     if(id == test_motor_id){
-      md.setMotionMode(mab::MdMode_E::RAW_TORQUE);
+      md.setMotionMode(mab::MdMode_E::IMPEDANCE);
     } else if (id == drive_motor_id)
     {
       md.setMotionMode(mab::MdMode_E::VELOCITY_PID);
