@@ -25,8 +25,11 @@ int main(){
 
   // setup output csv file and write header
   std::ofstream output_file;
-  output_file.open("../data/gearmotor_test_2");
-  std::string header = "time, vel0, torque0, vel1, torque1";
+  std::string filename = "gearmotor_test_";
+  int filenum = 5;
+  for(;std::filesystem::exists("../data/" + filename + std::to_string(filenum));filenum++);
+  output_file.open("../data/" + filename + std::to_string(filenum));
+  std::string header = "time, test_pos, test_vel, test_tau, test_pos, drive_vel, drive_tau, sensor_tau";
   output_file << header << std::endl;
 
   // // setup gpio pin for clutch
@@ -35,7 +38,7 @@ int main(){
   // digitalWrite(17, LOW);
 
   // initialize adc
-  // ADS1115 adc_ = ADS1115();
+  ADS1115 adc_ = ADS1115();
   mab::MD test_motor(ids[0], candle);
   mab::MD drive_motor(ids[1], candle);
   test_motor.setMotionMode(mab::MdMode_E::RAW_TORQUE);
@@ -47,6 +50,17 @@ int main(){
   // drive_motor.setVelocityPIDparam(20, 2, .5,2);
   test_motor.setImpedanceParams(20, 2);
   drive_motor.setImpedanceParams(0, 10);
+
+
+  double test_pos = test_motor.getPosition().first;
+  double test_vel = test_motor.getVelocity().first;
+  double test_tau = test_motor.getTorque().first;
+
+  double drive_pos = drive_motor.getPosition().first;
+  double drive_vel = drive_motor.getVelocity().first;
+  double drive_tau = drive_motor.getTorque().first;
+
+  double adc_tau = adc_.readTorque();
 
 
 
@@ -67,11 +81,13 @@ int main(){
 
     double seconds = double(time_elapsed) / 1e9;
 
-    double des_tau = double((int(seconds) % 22 - 11)/ abs(int(seconds) % 22 - 11)) * ((int(seconds) % 11) - 5) / 2.5;
+    // double des_tau = double((int(seconds) % 22 - 11)/ abs(int(seconds) % 22 - 11)) * ((int(seconds) % 11) - 5) / 2.5;
+    double des_tau = seconds/10;
     // double des_tau = sin(seconds);
     // if( seconds > 5){
     //   des_tau = des_tau * 2;}
     double des_vel = - int(int(seconds) / 11) % 5;
+    // double des_vel = 0;
     // des_pos += des_vel * loop_time * 1e-9;
     // double des_tau = 0;
     // double des_vel = 0;
@@ -81,28 +97,49 @@ int main(){
 
     // test_motor.setTargetPosition(des_pos1);
     // drive_motor.setTargetPosition(des_pos2);
-    test_motor.setTargetTorque(des_tau);
+    if(test_motor.setTargetTorque(des_tau)!= mab::MD::Error_t::OK){
+      std::cout<< "Test Motor Error" << std::endl;
+      RUN = false;
+    }
+
+
+    if(drive_motor.setTargetVelocity(des_vel)!= mab::MD::Error_t::OK){
+      std::cout<< "Drive Motor Error" << std::endl;
+      RUN = false;
+    }
 
     // test_motor.setTargetVelocity(-des_vel);
     // test_motor.setTargetVelocity(drive_motor.getVelocity().first);
-    drive_motor.setTargetVelocity(des_vel);
+    
     // drive_motor.setTargetPosition(des_pos);
-    drive_motor.setTargetTorque(-des_tau);
+    // drive_motor.setTargetTorque(-des_tau);
     // test_motor.setTargetPosition(0);
     // motor.setTargetTorque(-5);
     // drive_motor.setTargetPosition(time_elapsed * 1e-9);
 
+    test_pos = test_motor.getPosition().first;
+    test_vel = test_motor.getVelocity().first;
+    test_tau = test_motor.getTorque().first;
 
+    drive_pos = drive_motor.getPosition().first;
+    drive_vel = drive_motor.getVelocity().first;
+    drive_tau = drive_motor.getTorque().first;
+
+    adc_tau = adc_.readTorque();
+
+    if(test_pos + drive_pos > .5){
+      std::cout << "[DYNO] Position Mismatch. Drive pos:" << drive_pos << ", Test pos: " << test_pos << std::endl;
+    }
     // write things to file
-    output_file << time_elapsed << ',' << test_motor.getVelocity().first << ',' << test_motor.getTorque().first << ','<< drive_motor.getVelocity().first << ',' << drive_motor.getTorque().first  << std::endl;
+    output_file << time_elapsed << ',' << test_pos << ',' << test_vel << ','<< test_tau << ','<< drive_pos << ','<< drive_vel << ',' << drive_tau  << ',' << adc_tau << std::endl;
     // if(time_elapsed > 5e10 && !clutch_engaged && abs(motor.getPosition()) < 0.2){
     //   clutch_engaged = true;
     //   digitalWrite(17, HIGH);
       
     // }
-    std::cout << seconds << ',' << test_motor.getVelocity().first << ',' << test_motor.getTorque().first << ','<< drive_motor.getVelocity().first << ',' << drive_motor.getTorque().first <<std::endl;
+    std::cout << seconds << ',' << test_vel << ',' << test_tau << ','<< drive_vel << ',' << drive_tau << ',' << adc_tau <<std::endl;
 
-    if(time_elapsed > 60e9){
+    if(time_elapsed > 50e9){
       break;
     }
 
