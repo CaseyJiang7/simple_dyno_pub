@@ -49,7 +49,7 @@ int main(){
   drive_motor.setMaxTorque(15);
   // drive_motor.setVelocityPIDparam(20, 2, .5,2);
   test_motor.setImpedanceParams(20, 2);
-  drive_motor.setImpedanceParams(0, 10);
+  drive_motor.setImpedanceParams(20, 10);
 
 
   double test_pos = test_motor.getPosition().first;
@@ -82,7 +82,7 @@ int main(){
     double seconds = double(time_elapsed) / 1e9;
 
     // double des_tau = double((int(seconds) % 22 - 11)/ abs(int(seconds) % 22 - 11)) * ((int(seconds) % 11) - 5) / 2.5;
-    double des_tau = seconds/10;
+    double des_tau = seconds/5 - 5;
     // double des_tau = sin(seconds);
     // if( seconds > 5){
     //   des_tau = des_tau * 2;}
@@ -103,7 +103,7 @@ int main(){
     }
 
 
-    if(drive_motor.setTargetVelocity(des_vel)!= mab::MD::Error_t::OK){
+    if(drive_motor.setTargetPosition(0)!= mab::MD::Error_t::OK){
       std::cout<< "Drive Motor Error" << std::endl;
       RUN = false;
     }
