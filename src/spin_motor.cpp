@@ -41,14 +41,14 @@ int main(){
   ADS1115 adc_ = ADS1115();
   mab::MD test_motor(ids[0], candle);
   mab::MD drive_motor(ids[1], candle);
-  test_motor.setMotionMode(mab::MdMode_E::RAW_TORQUE);
+  test_motor.setMotionMode(mab::MdMode_E::IMPEDANCE);
   drive_motor.setMotionMode(mab::MdMode_E::IMPEDANCE);
   test_motor.enable();
   drive_motor.enable();
   test_motor.setMaxTorque(15);
   drive_motor.setMaxTorque(15);
   // drive_motor.setVelocityPIDparam(20, 2, .5,2);
-  test_motor.setImpedanceParams(20, 2);
+  test_motor.setImpedanceParams(0, 0);
   drive_motor.setImpedanceParams(20, 10);
 
 
@@ -82,7 +82,7 @@ int main(){
     double seconds = double(time_elapsed) / 1e9;
 
     // double des_tau = double((int(seconds) % 22 - 11)/ abs(int(seconds) % 22 - 11)) * ((int(seconds) % 11) - 5) / 2.5;
-    double des_tau = seconds/5 - 5;
+    double des_tau = seconds/10;
     // double des_tau = sin(seconds);
     // if( seconds > 5){
     //   des_tau = des_tau * 2;}
@@ -103,10 +103,11 @@ int main(){
     }
 
 
-    if(drive_motor.setTargetPosition(0)!= mab::MD::Error_t::OK){
+    if(drive_motor.setTargetPosition(seconds/10)!= mab::MD::Error_t::OK){
       std::cout<< "Drive Motor Error" << std::endl;
       RUN = false;
     }
+    drive_motor.setTargetVelocity(0.1);
 
     // test_motor.setTargetVelocity(-des_vel);
     // test_motor.setTargetVelocity(drive_motor.getVelocity().first);
@@ -127,7 +128,7 @@ int main(){
 
     adc_tau = adc_.readTorque();
 
-    if(test_pos + drive_pos > .5){
+    if(abs(test_pos - drive_pos) > .5){
       std::cout << "[DYNO] Position Mismatch. Drive pos:" << drive_pos << ", Test pos: " << test_pos << std::endl;
     }
     // write things to file
@@ -153,10 +154,10 @@ int main(){
   // auto &motor = candle->md80s[0];
   test_motor.setTargetVelocity(0);
   drive_motor.setTargetVelocity(0);
-  test_motor.setTargetPosition(0);
-  drive_motor.setTargetPosition(0);
-  // test_motor.setTargetTorque(0);
-  // drive_motor.setTargetTorque(0);
+  // test_motor.setTargetPosition(0);
+  // drive_motor.setTargetPosition(0);
+  test_motor.setTargetTorque(0);
+  drive_motor.setTargetTorque(0);
   lt.wait(1e9);
   mab::detachCandle(candle);
   std::cout << "DONE" << std::endl;
