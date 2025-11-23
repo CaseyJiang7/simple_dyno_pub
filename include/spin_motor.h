@@ -23,4 +23,4 @@ void createSigIntHandler();
 /// @param s SIGINT
 void handleKill(int s);
 
-void parse_motor_flags(int argc, char** argv, int& velocity, double& torque_cmd);
+void parse_motor_flags(int argc, char** argv, double& velocity, double& torque_cmd);
