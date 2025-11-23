@@ -84,7 +84,7 @@ int main(int argc, char** argv){
         // write things to file
         double kt = 0.105;
         output_file << now_ns << ','
-                    << time_elapsed << ',' 
+                    << seconds << ',' 
                     << drive_motor.getPosition().first << ',' 
                     << drive_motor.getTorque().first << ','
                     // << test_motor.getPosition().first << ',' 
@@ -95,8 +95,8 @@ int main(int argc, char** argv){
         std::cout << "[DEBUG] Time: " << seconds 
                 //   << ", sensor_torque: " << adc_.readTorque() 
                   << ", drive position: "<< drive_motor.getPosition().first <<", "
-                  << "drive torque: "<<drive_motor.getTorque().first << ","
-                  << ", current: " <<drive_motor.getTorque().first / kt
+                  << "drive torque: "<<drive_motor.getTorque().first << ", "
+                  << "current: " <<drive_motor.getTorque().first / kt
                   << std::endl;
 
         // if(time_elapsed > 1e10){
