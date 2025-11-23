@@ -28,10 +28,12 @@ Candle *initializeCandle() {
 
 void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const mab::canId_t drive_motor_id) {
   // Ping FDCAN bus in search of drives
+  std::cout<<"About to discover\n";
   auto ids = mab::MD::discoverMDs(candle);
+  std::cout<<"Discovered\n";
   // Check that we found exactly two motors
-  if (ids.size() != 2) {
-    cout << "Expected 2 motors, found " << ids.size()
+  if (ids.size() != 1) {
+    cout << "Expected 1 motors, found " << ids.size()
          << " motors instead. Aborted." << endl;
     exit(EXIT_FAILURE);
   }
@@ -73,16 +75,16 @@ void initializeMotors(Candle *candle, const mab::canId_t test_motor_id, const ma
       exit(EXIT_FAILURE);
     }
     md.zero();
-    if(id == test_motor_id){
-      md.setMotionMode(mab::MdMode_E::RAW_TORQUE);
-    } else if (id == drive_motor_id)
-    {
-      md.setMotionMode(mab::MdMode_E::VELOCITY_PID);
-    } else{
-      cout << "[DYNO] Motor ID not specified"<< endl;
-      exit(EXIT_FAILURE);
-    }
+    // if(id == test_motor_id){
+    //   md.setMotionMode(mab::MdMode_E::RAW_TORQUE);
+    // } else if (id == drive_motor_id)
+    // {
+    md.setMotionMode(mab::MdMode_E::VELOCITY_PID);
+    // } else{
+    //   cout << "[DYNO] Motor ID not specified"<< endl;
+    //   exit(EXIT_FAILURE);
+    // }
   }
   mds[0].enable();
-  mds[1].enable();
+  // mds[1].enable();
 }

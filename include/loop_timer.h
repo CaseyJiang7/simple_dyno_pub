@@ -1,26 +1,36 @@
 #pragma once
 
+#include <cstdint>
 #include "global_utils.h"
 
+/// @brief Utility class for timing loops with a fixed period.
+/// 
+/// LoopTimer tracks the previous invocation time and allows blocking
+/// until the next desired period has elapsed. Useful for maintaining
+/// consistent loop frequencies.
 class LoopTimer {
 public:
-  /// @brief Creates a new LoopTimer and initializes its previous invocation
-  /// time
-  LoopTimer();
+    /// @brief Creates a new LoopTimer and initializes its previous invocation time.
+    inline LoopTimer() 
+        : previous_time_(rtcNsSinceEpoch()), period_(0) {}
 
-  /// @brief Blocks current thread for 'period' nanoseconds, counted from this
-  /// LoopTimer's previous invocation time (this->previous_time_)
-  /// @param period The number of nanoseconds to block for (period of the loop)
-  void wait(const uint64_t period);
+    /// @brief Blocks current thread until 'period' nanoseconds have passed
+    /// since the last invocation.
+    /// @param period The desired loop period in nanoseconds.
+    inline void wait(const uint64_t period) {
+        uint64_t current_time;
+        do {
+            current_time = rtcNsSinceEpoch();
+        } while (current_time - previous_time_ < period);
+        period_ = current_time - previous_time_;
+        previous_time_ = current_time;
+    }
 
-  /// @brief Get the recorded period of the last loop of this timer
-  /// @return Period of last loop in ns
-  uint64_t period() const;
+    /// @brief Returns the actual period (in nanoseconds) of the last loop.
+    /// @return Measured loop period in nanoseconds.
+    inline uint64_t period() const { return period_; }
 
 private:
-  /// @brief Previous invocation time in nanoseconds since Epoch
-  uint64_t previous_time_;
-
-  /// @brief Recorded period of the last loop
-  uint64_t period_;
+    uint64_t previous_time_; ///< Previous invocation time (ns since Epoch)
+    uint64_t period_;        ///< Measured period of the last loop (ns)
 };

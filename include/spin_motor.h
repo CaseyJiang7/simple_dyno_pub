@@ -22,3 +22,5 @@ void createSigIntHandler();
 /// @brief Catches Ctrl+C while middleware is running
 /// @param s SIGINT
 void handleKill(int s);
+
+void parse_motor_flags(int argc, char** argv, int& velocity, double& torque_cmd);
