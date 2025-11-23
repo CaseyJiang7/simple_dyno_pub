@@ -19,6 +19,13 @@ int main(int argc, char** argv){
 
     std::cout << "[DEBUG] Candle initialized at " << candle << std::endl;
 
+    // start setting up output file
+    std::ofstream output_file;
+    double setVelocity;
+    double testTorque;
+    std::ostringstream filename;
+    parse_motor_flags(argc, argv, setVelocity, testTorque);
+
     initializeMotors(candle, test_motor_id, drive_motor_id);
     std::cout << "[DEBUG] Motors initialized (test: " << test_motor_id << ", drive: " << drive_motor_id << ")" << std::endl;
 
@@ -36,11 +43,7 @@ int main(int argc, char** argv){
     std::cout << "[DEBUG] Start time: " << start_time << std::endl;
 
     // setup output csv file and write header
-    std::ofstream output_file;
-    double setVelocity;
-    double testTorque;
-    std::ostringstream filename;
-    parse_motor_flags(argc, argv, setVelocity, testTorque);
+    
     filename << "../data/drive_log" 
             << "_vel" << setVelocity
             << "_t" << testTorque
